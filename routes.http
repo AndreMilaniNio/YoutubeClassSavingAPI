@@ -1,0 +1,15 @@
+GET http://localhost:3333/
+###
+GET http://localhost:3333/easter
+###
+POST http://localhost:3333/ytclass
+Content-Type: application/json
+
+{
+  "title": "Introdução ao Fastify",
+  "description": "Aprenda a criar APIs rápidas e simples com o framework Fastify no Node.js.",
+  "discipline": "Fastify",
+  "url": "https://www.youtube.com/watch?v=abcd12345",
+  "language": "Português",
+  "author": "Noo Mux"
+}
