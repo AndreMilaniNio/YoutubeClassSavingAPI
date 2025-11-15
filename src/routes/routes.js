@@ -1,4 +1,4 @@
-import { PostNewYtClass } from "../controlers/ytClassControl.js";
+import { DeleteYtClass, GetYtClasses, PostNewYtClass } from "../controlers/ytClassControl.js";
 
 // Exportando rotas
 export const Routes = (app) => {
@@ -13,4 +13,6 @@ export const Routes = (app) => {
   });
 
   app.post("/ytclass", PostNewYtClass);
+  app.get("/ytclass", GetYtClasses);
+  app.delete("/ytclass/:id", DeleteYtClass);
 };

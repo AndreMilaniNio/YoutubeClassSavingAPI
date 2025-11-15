@@ -1,9 +1,10 @@
-import { GetYoutubeTitle } from "../services/getTitle.js";
+import { GetYoutubeVideoInformation } from "../services/getVideoInformation.js";
 import { YtClass } from "../models/ytClass.js";
 
+// POST (CRIAR NOVA AULA)
 export async function PostNewYtClass(request, response) {
   try {
-    // Pucando url do meu request
+    // Puxando url do meu request
     const { url } = request.body;
 
     // Verificado se já existe aula com URL existente
@@ -14,17 +15,51 @@ export async function PostNewYtClass(request, response) {
       });
 
     // Puxa o título do vídeo do YouTube
-    const title = await GetYoutubeTitle(url);
-    // Criando a aula
-    const newClass = await YtClass.create({ ...request.body, title });
+    const { title, channel, thumbnail } = await GetYoutubeVideoInformation(url);
+    // Criando a aula (Somente o author tem o chanel com : pq o nome vem diferente da função acima)
+    const newClass = await YtClass.create({
+      ...request.body,
+      title,
+      thumbnail,
+      author: channel,
+    });
+
     // Resposta de resultado
-    response
+    return response
       .status(201)
       .send({ message: "Aula nova inserida!", aula: newClass });
   } catch (error) {
     // Em caso de erro:
-    response
+    return response
       .status(400)
       .send({ message: "Erro ao criar nova aula!", error: error.message });
+  }
+}
+
+// GET (PUXAR AULAS DO BANCO - TODAS)
+export async function GetYtClasses(request, response) {
+  try {
+    const ytClasses = await YtClass.findOne();
+    if (!ytClasses) {
+      return response.status(400).send({ message: "Aulas não encontradas" });
+    }
+    return response.status(200).send({ classes: ytClasses });
+  } catch (error) {
+    return response
+      .status(400)
+      .send({ message: "Erro ao criar nova aula!", error: error.message });
+  }
+}
+
+export async function DeleteYtClass(request, response) {
+  try {
+    const { id } = request.params;
+    const classToDelete = await YtClass.findByIdAndDelete(id);
+
+    return response.status(200).send({ deletedClass: classToDelete });
+  } catch (error) {
+    response
+      .status(400)
+      .send("Não foi possível deletar a aula, error: " + error.message);
   }
 }

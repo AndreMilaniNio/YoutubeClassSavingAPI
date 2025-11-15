@@ -1,15 +1,22 @@
 GET http://localhost:3333/
 ###
 GET http://localhost:3333/easter
+
+###
+GET http://localhost:3333/ytclass
+
 ###
 POST http://localhost:3333/ytclass
 Content-Type: application/json
 
 {
   "title": "Introdução ao Fastify",
-  "description": "Aprenda a criar APIs rápidas e simples com o framework Fastify no Node.js.",
-  "discipline": "Fastify",
-  "url": "https://www.youtube.com/watch?v=abcd12345",
+  "description": "Vídeoclip de Guns N' Roses",
+  "discipline": "JavaScript",
+  "url": "https://youtu.be/LZJ6QGSpVSk?si=eRZuIEeEBMpLsgXu",
   "language": "Português",
   "author": "Noo Mux"
 }
+
+###
+DELETE http://localhost:3333/ytclass/6918a46924ea1c7e76818b2b
