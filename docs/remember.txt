@@ -1,0 +1,10 @@
+# Implementações que preciso:
+
+1. Adicionar API do yt pra buscar o nome do vídeo! -- FEITO
+2. Realizar CRUD
+    - Criar aula________________________________- FEITO
+    - Listar aulas______________________________- FEITO
+    - Listar aulas por tipo 
+    - Listar aula por nome
+    - Excluir aula (por id)_____________________- FEITO
+    - Update nas especificações de aulas________- FEITO 

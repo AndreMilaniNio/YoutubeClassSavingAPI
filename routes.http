@@ -20,3 +20,16 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3333/ytclass/6918a46924ea1c7e76818b2b
+
+###
+PATCH  http://localhost:3333/ytclass/6918cd923765c006a1985ccc
+Content-Type: application/json
+
+{
+  "title": "Introdução ao Fastify",
+  "description": "Vídeoclip de Guns N' Roses",
+  "discipline": "JavaScript",
+  "url": "https://youtu.be/QiWXBYXt2zY?si=WiJgQG7qtwD-DcMr",
+  "language": "Português",
+  "author": "Noo Mux"
+}

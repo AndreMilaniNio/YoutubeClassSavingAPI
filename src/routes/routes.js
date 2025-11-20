@@ -1,4 +1,9 @@
-import { DeleteYtClass, GetYtClasses, PostNewYtClass } from "../controlers/ytClassControl.js";
+import {
+  DeleteYtClass,
+  GetYtClasses,
+  PostNewYtClass,
+  PatchYtClass
+} from "../controllers/ytClassControl.js";
 
 // Exportando rotas
 export const Routes = (app) => {
@@ -12,7 +17,14 @@ export const Routes = (app) => {
       .send({ message: "Você encontrou um Easter Egg! Parabéns! 🥚" });
   });
 
+  // Postar aulas
   app.post("/ytclass", PostNewYtClass);
+
+  // Listar aulas
   app.get("/ytclass", GetYtClasses);
+
+  // Deletar aulas
   app.delete("/ytclass/:id", DeleteYtClass);
+
+  app.patch("/ytclass/:id", PatchYtClass)
 };
